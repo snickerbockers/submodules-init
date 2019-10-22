@@ -6,5 +6,5 @@ windows (and hopefully macos too but I didn't test that).
 
 usage sample:
 ```
-uses: snickerbockers/submodules-init@v1
+uses: snickerbockers/submodules-init@v3
 ```
