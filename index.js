@@ -4,7 +4,8 @@ const git = require("simple-git");
 // most @actions toolkit packages have async methods
 async function run() {
     try {
-	git().raw('submodule update --init --recursive');
+	console.log("checking out submodules...");
+	await git().raw(['submodule', 'update', '--init', '--recursive']);
 	console.log("done checking out submodules");
   } 
   catch (error) {
