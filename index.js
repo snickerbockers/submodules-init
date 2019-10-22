@@ -1,18 +1,11 @@
 const core = require('@actions/core');
-const wait = require('./wait');
-
+const git = require("simple-git");
 
 // most @actions toolkit packages have async methods
 async function run() {
-  try { 
-    const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
-
-    core.debug((new Date()).toTimeString())
-    wait(parseInt(ms));
-    core.debug((new Date()).toTimeString())
-
-    core.setOutput('time', new Date().toTimeString());
+    try {
+	git().raw('submodule update --init --recursive');
+	console.log("done checking out submodules");
   } 
   catch (error) {
     core.setFailed(error.message);
