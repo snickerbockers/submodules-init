@@ -5,8 +5,7 @@ const git = require("simple-git");
 async function run() {
     try {
 	console.log("checking out submodules...");
-	await git().raw(['submodule', 'update', '--init', '--recursive']);
-	console.log("done checking out submodules");
+	git().outputHandler((command, stdout, stderr) => {stdout.pipe(process.stdout), stderr.pipe(process.stderr)}).submoduleUpdate(['--init', '--recursive'], () => console.log("done checking out submodules"));
   } 
   catch (error) {
     core.setFailed(error.message);
