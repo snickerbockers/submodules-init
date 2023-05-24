@@ -1,5 +1,5 @@
 name: 'submodules-init'
 description: 'init and recursively update git submodules'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'
